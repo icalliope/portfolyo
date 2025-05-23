@@ -1,38 +1,349 @@
-.App {
-  text-align: center;
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  background-color: #0b2545;
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root {
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.container {
+  width: 100%;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+   overflow-y: auto;
+}
+
+
+
+.header-logo {
+  font-weight: bold;
+  color: #0b2545;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  color: #0b2545;
+  cursor: pointer;
+  z-index: 101
+}
+
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 8px 30px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #dfe7ed;
+  z-index: 1000; /* Z-index değerini artırdım */
+  color: #0b2545;
 }
 
-.App-link {
-  color: #61dafb;
+.main-nav-menu {
+  display: flex;
+  margin-right: 70px;
+  gap: 20px;
+  flex-wrap: wrap;
+  z-index: 1001; }
+
+.main-nav-menu .nav-link {
+  color: #0b2545;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: text-decoration 0.3s ease;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.main-nav-menu .nav-link:hover {
+  text-decoration: underline;
+}
+
+.hero-section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-top: 60px;
+}
+
+.hero-text {
+  position: relative;
+  top: 35%;
+  left: 50px;
+  transform: translateY(-30%);
+  z-index: 2;
+  color: #dfe7ed;
+  max-width: 50%;
+}
+
+.hero-text .intro-line,
+.name-line {
+  font-family: 'Ancizar Sans', cursive;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 55px;
+  margin: 0;
+  white-space: nowrap;
+
+  background: linear-gradient(to right, #c3ccd4, #a2c4c9, #e0e6eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.name-line {
+  border-right: 2px solid #dfe7ed;
+  width: 0;
+  animation: typing 2.5s steps(22, end) forwards, blink-caret 0.75s step-end infinite;
+}
+
+
+.hero-text .intro-line {
+  white-space: normal;
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50vw;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.25;
+  filter: brightness(60%);
+}
+
+.contact-info {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  z-index: 3;
+  color: #dfe7ed;
+  font-size: 0.95rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.contact-info p {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.contact-info a img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #dfe7ed }
+}
+
+
+.scroll-to-top-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #dfe7ed;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 999;
+  display: flex;
+  -content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.scroll-to-top-button:hover {
+  background-color: #c3ccd4;
+  transform: translateY(-3px);
+}
+
+.scroll-to-top-button .button-icon {
+  width: 30px;
+  height: 30px;
+  display: block;
+  filter: invert(10%) sepia(20%) saturate(1000%) hue-rotate(190deg) brightness(80%) contrast(100%);
+}
+
+
+@media (max-width: 768px) {
+  .main-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 20px;
+    width: 100%;
+    box-sizing: border-box;
   }
-  to {
-    transform: rotate(360deg);
+
+  .header-logo {
+    margin-left: 0;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+  }
+
+  .main-nav-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 180px;
+    background-color: #dfe7ed;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 10px;
+    z-index: 99;
+    left: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+  .main-nav-menu.open {
+    display: flex !important;
+  }
+
+  .main-nav-menu .nav-link {
+    margin: 5px 0;
+    width: 100%;
+    text-align: left;
+    padding: 5px 0;
+  }
+
+  .hero-section {
+    flex-direction: column;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+    padding-top: 60px;
+  }
+
+  .hero-text {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    padding: 0 1rem;
+    margin-top: 2rem;
+    max-width: 100%;
+  }
+
+  .hero-text .intro-line,
+  .name-line {
+    font-size: 30px;
+    background: linear-gradient(to right, #ffffff, #e0e6eb, #c3ccd4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .name-line {
+    animation: typing 2.5s steps(22, end) forwards, blink-caret 0.75s step-end infinite;
+  }
+
+  .hero-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+  }
+
+  .hero-image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    filter: brightness(60%);
+  }
+
+  .contact-info {
+    position: relative;
+    margin-top: 3rem;
+    bottom: auto;
+    left: auto;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  .icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .scroll-to-top-button {
+    width: 45px;
+    height: 45px;
+    bottom: 20px;
+    right: 20px;
+    padding: 8px;
+  }
+  .scroll-to-top-button .button-icon {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-text .intro-line,
+  .hero-text .name-line {
+    font-size: 24px;
   }
 }

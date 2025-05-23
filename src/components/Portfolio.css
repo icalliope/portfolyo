@@ -1,0 +1,223 @@
+/* portfolio.css */
+.portfolio-section {
+  padding: 80px 20px;
+  background-color: #0b2545;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: visible; /* << BU SATIRI GÜNCELLEDİK */
+  overflow-y: hidden;
+  color: #dfe7ed;
+}
+
+
+.timeline {
+  position: relative;
+  max-width: 1000px; /* Maksimum genişliği koru */
+  margin: 0 auto; /* Ortala */
+  padding-top: 40px; /* Çizginin üstünden boşluk */
+  padding-bottom: 40px; /* Çizginin altından boşluk */
+}
+
+.line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0; /* Çizginin tüm yüksekliği kaplamasını sağlar */
+  transform: translateX(-50%);
+  width: 4px;
+  background-color: #13315c;
+  z-index: 0; /* Kartların arkasında kalması için */
+}
+
+.timeline-card {
+  position: relative;
+  width: calc(50% - 40px); /* Kart genişliği: yarısı - gap boşluğu */
+  background-color: #dfe7ed;
+  border-radius: 10px;
+  padding: 20px; /* Kart içi padding */
+  margin-bottom: 40px; /* Her kartın altında boşluk bırakır */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box; /* Padding'in genişliğe dahil olmasını sağlar */
+  color: #333; /* Kart içindeki yazı rengi */
+  z-index: 1; /* Kartların çizginin önünde olması için */
+  display: flex; /* İçeriği ortalamak için flex kullan */
+  flex-direction: column;
+  justify-content: center; /* Dikeyde ortala */
+  min-height: 120px; /* Kartların minimum yüksekliğini belirleyebiliriz */
+}
+
+.timeline-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-card h3 {
+  margin: 0 0 10px;
+  color: #13315c;
+  font-size: 1.4rem; /* Başlık boyutunu ayarla */
+}
+
+.timeline-card p {
+  margin: 0;
+  font-size: 1rem; /* Paragraf boyutunu ayarla */
+}
+
+/* Sol taraftaki kartlar */
+.timeline-card.left {
+  left: 0;
+  /* margin-right: calc(50% + 20px); */ /* Bu satırı değiştiriyoruz */
+  margin-right: 20px; /* Çizgiye yakınlaşma */
+  text-align: right;
+  transform: translateX(20px); /* Küçük bir başlangıç kayması */
+  opacity: 0; /* Başlangıçta görünmez */
+  animation: slideInLeft 1s forwards ease-out; /* Animasyon ekle */
+}
+
+/* Sağ taraftaki kartlar */
+.timeline-card.right {
+  left: calc(50% + 20px); /* Çizgiden sonraki başlangıç noktası + boşluk */
+  /* margin-left: calc(50% + 20px); */ /* Bu satırı değiştiriyoruz */
+  margin-left: 20px; /* Çizgiye yakınlaşma */
+  text-align: left;
+  transform: translateX(-20px); /* Küçük bir başlangıç kayması */
+  opacity: 0; /* Başlangıçta görünmez */
+  animation: slideInRight 1s forwards ease-out; /* Animasyon ekle */
+}
+
+/* Her kartın kendi animasyon gecikmesi */
+.timeline-card:nth-child(even) { /* Sağdaki kartlar */
+    animation-delay: 0.2s;
+}
+.timeline-card:nth-child(odd) { /* Soldaki kartlar */
+    animation-delay: 0s; /* İlk kart hemen başlar */
+}
+/* Diğer kartlar için gecikmeyi artırabilirsiniz */
+.timeline-card:nth-child(3) {
+    animation-delay: 0.4s;
+}
+.timeline-card:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.timeline-card-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.left-group {
+  flex-direction: row;
+}
+
+.right-group {
+  flex-direction: row-reverse;
+}
+
+.lottie-container {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+.right-of-card {
+  margin-left: 20px;
+}
+
+.left-of-card {
+  margin-right: 20px;
+}
+
+/* Mobil Uyum */
+@media (max-width: 768px) {
+  .timeline-card-group {
+    flex-direction: column !important;
+    align-items: flex-start;
+  }
+
+  .lottie-container {
+    margin: 10px 0;
+    align-self: center;
+  }
+
+  .right-of-card,
+  .left-of-card {
+    margin: 0;
+  }
+}
+
+/* Animasyon Keyframeleri */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Küçük Ekranlar (Tablet ve Mobil) */
+@media (max-width: 768px) {
+  .line {
+    left: 20px; /* Çizgiyi sola yaklaştır */
+    transform: none; /* Ortalamayı kaldır */
+  }
+
+  .timeline-card {
+    width: calc(100% - 40px); /* Tam genişlik, kenarlarda boşluk */
+    left: 0; /* Sol kenara hizala */
+    margin-left: 40px; /* Çizgi ve kart arasında boşluk bırak */
+    margin-right: 0; /* Sağ margin'i kaldır */
+    text-align: left; /* Her zaman sola hizala */
+    transform: translateX(0); /* Animasyon kaymasını sıfırla */
+    animation: none; /* Animasyonu kapat */
+    opacity: 1; /* Her zaman görünür */
+  }
+
+  /* Mobil görünümde spesifik left/right kurallarını sıfırla */
+  .timeline-card.left,
+  .timeline-card.right {
+    left: 0;
+    margin-left: 0; /* Çizginin sağında olmasını sağlar */
+    margin-right: 0;
+    text-align: left;
+    transform: translateX(0);
+  }
+
+  .timeline-card h3 {
+    font-size: 1.2rem;
+  }
+  .timeline-card p {
+    font-size: 0.9rem;
+  }
+
+  .portfolio-section {
+    padding: 60px 15px; /* Mobil padding */
+  }
+}
+
+/* Çok Küçük Ekranlar (Mobil) */
+@media (max-width: 480px) {
+  .portfolio-section {
+    padding: 40px 10px;
+  }
+  .timeline-card {
+    padding: 15px;
+    min-height: 100px;
+    margin-bottom: 30px;
+  }
+}

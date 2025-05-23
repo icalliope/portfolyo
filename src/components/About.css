@@ -1,0 +1,148 @@
+/* about.css */
+
+.about-section {
+  padding: 80px 20px;
+  margin: 0 auto;
+  color: #dfe7ed;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 60px);
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  width: 100%;
+  gap: 20px;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+
+.about-card {
+  flex: 1;
+  background-color: #7cb1d2;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  z-index: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.about-card h2 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+.slide-animation {
+  position: relative;
+  width: 300px;    /* animasyon boyutu */
+  height: 150px;
+  margin-top: 20px;
+
+  animation: slideAcross 6s linear infinite;
+}
+
+/* Ekranın dışından girip dışına çıkma animasyonu */
+@keyframes slideAcross {
+  0% {
+    transform: translateX(-300%); /* sayfa solunun dışında başla */
+  }
+  50% {
+    transform: translateX(0%); /* ekranın ortasına gelir */
+  }
+  100% {
+    transform: translateX(300%); /* sayfa sağının dışına gider */
+  }
+}
+
+
+.about-animation {
+  width: 250px;
+  height: 250px;
+  z-index: 0;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-animation svg {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+}
+
+.about-animation.left {
+  order: -1;
+  margin-left: 0;
+  margin-top: 0;
+}
+
+.about-animation.right {
+  order: 1;
+  margin-right: 0;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 15px;
+    overflow-x: hidden;
+  }
+
+  .about-animation {
+    max-width: 80%;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 20px auto;
+    flex-shrink: 1;
+  }
+
+  .about-animation.left,
+  .about-animation.right {
+      order: unset;
+      margin: 0 auto 20px auto;
+  }
+
+  .about-card {
+    width: 100%;
+    max-width: 400px;
+    min-width: unset;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+  }
+
+  .about-section {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    padding: 40px 0;
+  }
+  .about-card {
+    font-size: 1rem;
+    padding: 15px;
+  }
+  .about-card h2 {
+    font-size: 1.6rem;
+  }
+  .about-animation {
+    width: 150px;
+    height: 150px;
+  }
+}
