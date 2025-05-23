@@ -45,23 +45,22 @@
 }
 .slide-animation {
   position: relative;
-  width: 300px;    /* animasyon boyutu */
+  width: 300px; 
   height: 150px;
   margin-top: 20px;
 
   animation: slideAcross 6s linear infinite;
 }
 
-/* Ekranın dışından girip dışına çıkma animasyonu */
 @keyframes slideAcross {
   0% {
-    transform: translateX(-300%); /* sayfa solunun dışında başla */
+    transform: translateX(-300%);
   }
   50% {
-    transform: translateX(0%); /* ekranın ortasına gelir */
+    transform: translateX(0%);
   }
   100% {
-    transform: translateX(300%); /* sayfa sağının dışına gider */
+    transform: translateX(300%); 
   }
 }
 
